@@ -1,10 +1,11 @@
 from django.conf.urls.defaults import *
+from videogallery.views import *
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
-urlpatterns = patterns('',
+#urlpatterns = patterns('',
     # Example:
     # (r'^video_gallery/', include('video_gallery.foo.urls')),
 
@@ -13,4 +14,9 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # (r'^admin/', include(admin.site.urls)),
-)
+#)
+
+urlpatterns = patterns('',
+                       (r'^$', main_page),
+                       )
+                       
