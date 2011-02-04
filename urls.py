@@ -16,7 +16,5 @@ from videogallery.views import *
     # (r'^admin/', include(admin.site.urls)),
 #)
 
-urlpatterns = patterns('',
-                       (r'^$', main_page),
-                       )
+urlpatterns = patterns('',(r'^$', main_page),)
                        
