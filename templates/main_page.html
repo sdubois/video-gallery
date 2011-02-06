@@ -4,6 +4,11 @@
   </head>
   <body>
     <h1>{{page_title}}</h1>
-    <p>{{page_body}}</p>
+    {% if user.username %}
+    <p>Welcome {{user.username}}!
+      You can upload and share videos here.</p>
+    {% else %}
+    <p>Welcome anonymous user. You need to <a href="/login/">login</a> before you can upload videos.</p>
+    {% endif %}
   </body>
 </html>

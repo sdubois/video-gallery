@@ -16,5 +16,9 @@ from videogallery.views import *
     # (r'^admin/', include(admin.site.urls)),
 #)
 
-urlpatterns = patterns('',(r'^$', main_page),)
+urlpatterns = patterns('',
+(r'^$', main_page),
+(r'^user/(\w+)/$', user_page),
+(r'^login/$', 'django.contrib.auth.views.login'),
+)
                        
