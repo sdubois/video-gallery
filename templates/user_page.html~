@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>Video Gallery - User: {{username}}</title>
+  </head>
+  <body>
+    <h1>Videos for {{username}}</h1>
+    {% if bookmarks %}
+    <ul>
+      {% for bookmark in bookmarks %}
+      <li><a href="{{bookmark.link.url}}">
+	  {{bookmark.title}}</a></li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>No bookmarks found.</p>
+    {% endif %}
+  </body>
+</html>
