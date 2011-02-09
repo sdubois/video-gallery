@@ -1,18 +1,14 @@
-<html>
-  <head>
-    <title>Video Gallery - User: {{username}}</title>
-  </head>
-  <body>
-    <h1>Videos for {{username}}</h1>
-    {% if bookmarks %}
-    <ul>
-      {% for bookmark in bookmarks %}
-      <li><a href="{{bookmark.link.url}}">
-	  {{bookmark.title}}</a></li>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <p>No videos found.</p>
-    {% endif %}
-  </body>
-</html>
+{% extends "base.html" %}
+{% block title %}{{username}}{% endblock %}
+{% block head %}Videos for {{username}}{% endblock %}
+{% block content %}
+ {% if videos %}
+  <ul>
+   {% for video in videos %}
+    <li><a href="{{video.link.url}}">{{video.title}}</a></li>
+   {% endfor %}
+  </ul>
+ {% else %}
+  <p>No videos found</p>
+ {% endif %}
+{% endblock %}
