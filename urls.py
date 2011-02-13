@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import *
 from videogallery.views import *
+import os
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -16,11 +17,14 @@ from videogallery.views import *
     # (r'^admin/', include(admin.site.urls)),
 #)
 
+site_media = os.path.join(os.path.dirname(__file__), 'site_media')
+
 urlpatterns = patterns('',
 (r'^$', main_page),
 (r'^user/(\w+)/$', user_page),
 (r'^login/$', 'django.contrib.auth.views.login'),
 (r'^logout/$', logout_page),
-#(r'^admin/', include(admin.site.urls)),
+(r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
+ {'document_root': site_media}),
 )
-                       
+
