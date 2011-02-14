@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class RegistrationForm(forms.Form):
     username = forms.CharField(label=u'Username', max_length=30)
-    email = forms.EmailField(label=0'Email')
+    email = forms.EmailField(label=u'Email')
     password1 = forms.CharField(
         label = u'Password',
         widget = forms.PasswordInput()
@@ -32,4 +32,4 @@ def clean_username(self):
         User.objects.get(username=username)
     except User.DoesNotExist:
         return username
-    raise forms.ValidationError('Username is
+    raise forms.ValidationError('Username is already taken.')
