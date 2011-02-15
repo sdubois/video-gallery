@@ -4,6 +4,7 @@ from django.template import RequestContext
 from django.template.loader import get_template
 from django.contrib.auth.models import User
 from django.contrib.auth import logout, login
+from django.contrib.auth.views import *
 from django.shortcuts import render_to_response
 from videogallery.forms import *
 
@@ -39,8 +40,26 @@ def register_page(request):
                 password = form.cleaned_data['password1'],
                 email = form.cleaned_data['email']
                 )
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/register/success/')
     else:
         form = RegistrationForm()
     variables = RequestContext(request, {'form': form})
     return render_to_response('registration/register.html', variables)
+
+def video_upload_page(request):
+    if request.method == 'POST':
+        form = VideoUploadForm(request.POST)
+        if form.is_valid():
+            # Link, or videofile. Whatever, I don't even.
+            link, dummy = VideoFile.objects.get_or_create(
+                videofile = form.cleaned_data['video']
+            )
+            # Video
+            video, created = Video.objects.get_or_create(
+                user=request.user
+                videofile = link
+            )
+            video.title = form.cleaned_data['title']
+            if not created:
+                bookmark.
+                

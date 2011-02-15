@@ -14,6 +14,20 @@ class RegistrationForm(forms.Form):
         widget = forms.PasswordInput()
     )
 
+class VideoUploadForm(forms.Form):
+    video = forms.FileField(
+        label = u'Video'
+    )
+    title = forms.CharField(
+        label = u'Title'
+        widget = forms.TextInput(attrs={'size', 64})
+    )
+    tags = forms.Charfield(
+        label=u'Tags'
+        required = False
+        widget=forms.TextInput(attrs={'size', 64})
+    )
+
 def clean_password2(self):
     if 'password1' in self.cleaned_data:
         password1 = self.cleaned_data['password1']
@@ -33,3 +47,4 @@ def clean_username(self):
     except User.DoesNotExist:
         return username
     raise forms.ValidationError('Username is already taken.')
+
