@@ -5,7 +5,7 @@ import os
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
-
+# test
 #urlpatterns = patterns('',
     # Example:
     # (r'^video_gallery/', include('video_gallery.foo.urls')),
