@@ -1,0 +1,10 @@
+Video Gallery
+
+Video Gallery is a Django application for uploading and managing
+videos. Users can upload a videos in a variety of formats, which are
+then converted to be displayed using HTML5.
+
+This program is still a work in progress. When it is released, it will
+be under the GNU Affero General Public License v3. If you have any
+questions, feel free to contact the developer, Steven DuBois at
+sdubois@csh.rit.edu
