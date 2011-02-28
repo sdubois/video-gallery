@@ -16,16 +16,16 @@ class RegistrationForm(forms.Form):
 
 class VideoUploadForm(forms.Form):
     video = forms.FileField(
-        label = u'Video'
+        label = u'Video',
     )
     title = forms.CharField(
-        label = u'Title'
-        widget = forms.TextInput(attrs={'size', 64})
+        label = u'Title',
+        widget = forms.TextInput(attrs={'size': 64})
     )
-    tags = forms.Charfield(
-        label=u'Tags'
-        required = False
-        widget=forms.TextInput(attrs={'size', 64})
+    tags = forms.CharField(
+        label=u'Tags',
+        required = False,
+        widget=forms.TextInput(attrs={'size': 64})
     )
 
 def clean_password2(self):

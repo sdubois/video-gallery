@@ -56,10 +56,23 @@ def video_upload_page(request):
             )
             # Video
             video, created = Video.objects.get_or_create(
-                user=request.user
-                videofile = link
+                user=request.user,
+                link = link
             )
             video.title = form.cleaned_data['title']
             if not created:
-                bookmark.
+                video.tag_set.clear()
+                #Create new list for tags
+                tag_names = form.cleaned_data['tags'].split()
+                for tag_name in tag_names:
+                    tag, dummy = Tag.objects.get_or_create(name=tag_name)
+                    video.tag_set.add(tag)
+                bookmark.save()
+                return HttpResponseRedirect(
+                    '/user/%s' % request.user.username
+                )
+            else:
+                form = VideoUploadForm()
+            variables = RequestContext(request, {'form': form})
+            return render_to_response('video_upload.html', variables)
                 
