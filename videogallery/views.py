@@ -46,13 +46,15 @@ def register_page(request):
     variables = RequestContext(request, {'form': form})
     return render_to_response('registration/register.html', variables)
 
+#from forms import handle_uploaded_file
+
 def video_upload_page(request):
     if request.method == 'POST':
-        form = VideoUploadForm(request.POST)
+        form = VideoUploadForm(request.POST, request.FILES)
         if form.is_valid():
-            # Link, or videofile. Whatever, I don't even.
+            # Link
             link, dummy = VideoFile.objects.get_or_create(
-                videofile = form.cleaned_data['video']
+                videofile = form.cleaned_data['videofile']
             )
             # Video
             video, created = Video.objects.get_or_create(
@@ -67,12 +69,12 @@ def video_upload_page(request):
             for tag_name in tag_names:
                 tag, dummy = Tag.objects.get_or_create(name=tag_name)
                 video.tag_set.add(tag)
-            video.upload()
-            return HttpResponseRedirect(
-                '/user/%s' % request.user.username
-                )
+            #Save the uploaded video
+            #video.upload()
+            handle_uploaded_video(request.FILES['file'])
+            return HttpResponseRedirect('/user/%s' % request.user.username)
     else:
         form = VideoUploadForm()
-        variables = RequestContext(request, {'form': form})
-        return render_to_response('video_upload.html', variables)
+    variables = RequestContext(request, {'form': form})
+    return render_to_response('video_upload.html', variables)
                 
