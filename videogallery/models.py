@@ -7,6 +7,11 @@ class VideoFile(models.Model):
     def __unicode__(self):
         return self.videofile
 
+class VideoFile2(models.Model):
+    videofile = models.FileField(upload_to='videos/')
+    def __init__(self):
+        return self.videofile
+
 class Video(models.Model):
     title = models.CharField(max_length=200)
     user = models.ForeignKey(User)
