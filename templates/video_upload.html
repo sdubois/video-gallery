@@ -2,7 +2,7 @@
 {% block title %}Upload Video{% endblock %}
 {% block head %}Upload Video{% endblock %}
 {% block content %}
-<form method="post" action=".">{% csrf_token %}
+<form enctype="multipart/form-data" method="post" action=".">{% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="upload" />
 </form>

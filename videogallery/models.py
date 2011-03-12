@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class VideoFile(models.Model):
-    videofile = models.FileField(upload_to='media/')
+    videofile = models.FileField(upload_to='videos/')
     def __unicode__(self):
         return self.videofile
 
@@ -11,7 +11,7 @@ class Video(models.Model):
     title = models.CharField(max_length=200)
     user = models.ForeignKey(User)
     videofile = models.ForeignKey(VideoFile)
-    def __unicode(self):
+    def __unicode__(self):
         return u'%s, %s' % (self.user.username, self.link.url)
 
 class Tag(models.Model):

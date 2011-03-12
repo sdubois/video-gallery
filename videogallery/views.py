@@ -7,6 +7,7 @@ from django.contrib.auth import logout, login
 from django.contrib.auth.views import *
 from django.shortcuts import render_to_response
 from videogallery.forms import *
+from videogallery.models import *
 
 def main_page(request):
     return render_to_response(
