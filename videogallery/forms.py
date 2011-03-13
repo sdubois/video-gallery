@@ -15,11 +15,13 @@ class RegistrationForm(forms.Form):
     )
 
 class VideoUploadForm(forms.Form):
-    video = forms.FileField(
+    videofile = forms.FileField(
         label = u'Video',
+        required = True
     )
     title = forms.CharField(
         label = u'Title',
+        required = True,
         widget = forms.TextInput(attrs={'size': 64})
     )
     tags = forms.CharField(

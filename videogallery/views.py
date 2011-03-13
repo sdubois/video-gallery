@@ -54,7 +54,7 @@ def video_upload_page(request):
         form = VideoUploadForm(request.POST, request.FILES)
         if form.is_valid():
             # Link
-            link = VideoFile2.objects.get_or_create(
+            link = VideoFile.objects.get_or_create(
                 videofile = form.cleaned_data['videofile'],
             )
             # Video
