@@ -5,7 +5,8 @@
  {% if videos %}
   <ul>
    {% for video in videos %}
-    <li><a href="{{video.link.url}}">{{video.title}}</a></li>
+   {{video.title}}
+    <li><video src="../../{{video.videofile.videofile}}" controls="controls">Your browser does not support the OGV video codec. Get a real browser -- like Chrome or Firefox.</video></li>
    {% endfor %}
   </ul>
  {% else %}

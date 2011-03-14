@@ -2,6 +2,7 @@
 {% block title %}Upload Video{% endblock %}
 {% block head %}Upload Video{% endblock %}
 {% block content %}
+<p>Please only upload OGV videos. The conversion script is not yet functioning</p>
 <form enctype="multipart/form-data" method="post" action=".">{% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="upload" />

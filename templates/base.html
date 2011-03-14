@@ -8,10 +8,11 @@
 <div id="nav">
   <a href="/">home</a> |
   {% if user.is_authenticated %}
+  <a href="/upload/">upload</a> | 
   welcome {{user.username}}
   (<a href="/logout">logout</a>)
   {% else %}
-  <a href="/login/">login</a> | <a href="/register/">register</a>
+  <a href="/login/">login</a> | <a href="/register/">register</a> 
   {% endif %}
 </div>
 <h1>{% block head %}{% endblock %}</h1>
