@@ -1,5 +1,7 @@
-* Get uploads working
+* Get uploads working (DONE)
 * Nicer looking stylesheet
 * Write video conversion script
-* Integrate with webauth
+* Have main page display new videos
+* Display list of registered users
+* Move to production server, Integrate with webauth
 
