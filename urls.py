@@ -18,6 +18,7 @@ import os
 #)
 
 site_media = os.path.join(os.path.dirname(__file__), 'site_media')
+videos = os.path.join(os.path.dirname(__file__), 'videos')
 
 urlpatterns = patterns('',
 (r'^$', main_page),
@@ -25,7 +26,9 @@ urlpatterns = patterns('',
 (r'^login/$', 'django.contrib.auth.views.login'),
 (r'^logout/$', logout_page),
 (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': site_media}),
+(r'^videos/(?P<path>.*)$', 'django.views.static.serve', {'document_root': videos}),
 (r'^register/$', register_page),
+(r'^register/success/$', register_success),
 (r'^upload/$', video_upload_page),
 )
 

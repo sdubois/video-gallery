@@ -32,6 +32,9 @@ def logout_page(request):
     logout(request)
     return HttpResponseRedirect('/')
 
+def register_success(request):
+    return render_to_response('registration/register_success.html', RequestContext(request))
+
 def register_page(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
@@ -54,15 +57,16 @@ def video_upload_page(request):
         form = VideoUploadForm(request.POST, request.FILES)
         if form.is_valid():
             # Link
-            link = VideoFile.objects.get_or_create(
+            link, dummy = VideoFile.objects.get_or_create(
                 videofile = form.cleaned_data['videofile'],
             )
             # Video
-            video = Video.objects.get_or_create(
+            video, created = Video.objects.get_or_create(
                 user=request.user,
-                link = link
+                videofile = link,
+                title = form.cleaned_data['title']
             )
-            video.title = form.cleaned_data['title']
+            #video.title = form.cleaned_data['title']
             if not created:
                 video.tag_set.clear()
             #Create new list for tags
@@ -72,7 +76,7 @@ def video_upload_page(request):
                 video.tag_set.add(tag)
             #Save the uploaded video
             #video.upload()
-            handle_uploaded_video(request.FILES['file'])
+            #handle_uploaded_video(request.FILES['file'])
             return HttpResponseRedirect('/user/%s' % request.user.username)
     else:
         form = VideoUploadForm()
