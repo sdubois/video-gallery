@@ -28,6 +28,15 @@ def user_page(request, username):
     output = template.render(variables)
     return render_to_response('user_page.html', variables)
 
+def users_page(request):
+    template = get_template('users_page.html')
+    users = Users.objects.get(username)
+    variables = RequestContext(request, {
+            'users': users,
+    })
+    output = template.render(variables)
+    return render_to_response('users_page.html', variables)
+
 def logout_page(request):
     logout(request)
     return HttpResponseRedirect('/')

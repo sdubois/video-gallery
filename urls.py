@@ -23,6 +23,7 @@ videos = os.path.join(os.path.dirname(__file__), 'videos')
 urlpatterns = patterns('',
 (r'^$', main_page),
 (r'^user/(\w+)/$', user_page),
+(r'^users/$', users_page),
 (r'^login/$', 'django.contrib.auth.views.login'),
 (r'^logout/$', logout_page),
 (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': site_media}),
