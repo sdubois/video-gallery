@@ -3,7 +3,7 @@ from videogallery.views import *
 import os
 
 # Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
+from django.contrib import admin
 # admin.autodiscover()
 # test
 #urlpatterns = patterns('',
@@ -31,5 +31,6 @@ urlpatterns = patterns('',
 (r'^register/$', register_page),
 (r'^register/success/$', register_success),
 (r'^upload/$', video_upload_page),
+(r'^admin/', include(admin.site.urls)),
 )
 
