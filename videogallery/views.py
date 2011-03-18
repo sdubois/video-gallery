@@ -30,7 +30,7 @@ def user_page(request, username):
 
 def users_page(request):
     template = get_template('users_page.html')
-    users = Users.objects.get(username)
+    users = User.objects.all()
     variables = RequestContext(request, {
             'users': users,
     })

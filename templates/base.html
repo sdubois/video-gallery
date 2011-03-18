@@ -6,7 +6,8 @@
 </head>
 <body>
 <div id="nav">
-  <a href="/">home</a> |
+  <a href="/">home</a> | 
+  <a href="/users/">users</a> |
   {% if user.is_authenticated %}
   <a href="/upload/">upload</a> | 
   welcome {{user.username}}
